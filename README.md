@@ -109,14 +109,17 @@ A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Ag
 
 <a href="https://ibb.co/NVzPPN9"><img src="https://i.ibb.co/gjCppWS/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-13) Importação da view criada para o Power BI
-14) Modificação da tabela importada para fReclamações2020_2023
-15) Visualização da tabela no Power Query para verificação se os tipos das colunas foram corretamente importados
+13) Importação da view criada para o Power BI: Obter dados -> SQL Server -> Servidor -> Escolha da tabela -> Transformar dados
+14) Visualização da tabela no Power Query para verificação se os tipos das colunas foram corretamente importados
+15) Modificação do nome da tabela importada para fReclamações2020_2023
 16) Criação de uma tabela no Excel com as imagens das logos das operadoras
 17) Importação da tabela com os links das imagens para dentro do Power Query
 18) Mescla de consultas para inserir a coluna de link da logo na tabela principal
 19) Aplicação no Power BI
 20) Criação de uma tabela de Medidas para deixar as métricas organizadas
+
+<a href="https://imgbb.com/"><img src="https://i.ibb.co/GnxbSv9/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
+
 21) Criação da tabela dCalendario por meio do comando abaixo:
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/y59Kn16/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
