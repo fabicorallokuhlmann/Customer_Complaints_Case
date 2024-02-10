@@ -35,7 +35,7 @@ A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Ag
     <a href="https://ibb.co/hHstcZM"><img src="https://i.ibb.co/jGh1zW5/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
 11) Após a abertura do assistente de importação, as imagens abaixo demonstram os passos tomados:
-    - seleção do tipo de arquivo (.csv, no caso), definição do ponto-e-vírgula como parâmetro de separação das linhas
+   - seleção do tipo de arquivo (.csv, no caso), definição do ponto-e-vírgula como parâmetro de separação das linhas
       
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/db6qJsx/Solu-o4.png" alt="Solu-o4" border="0"></a>
 
