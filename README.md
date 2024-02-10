@@ -4,7 +4,7 @@ Projeto criado com o objetivo de gerar insights diagnósticos sobre as motivaç�
 
 A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Agência Nacional de Telecomunicações, em formato .csv. Após o download do arquivo no site do Governo Federal, os seguintes passos foram determinados para a condução do projeto:  
 
-1) Importação da base de dados para o Jupyter Notebook. A escolha dessa ferramenta se deu pelo tamanho do arquivo (5GB) e facilidade da leitura em Python
+1) Importação da base de dados para o Jupyter Notebook. A escolha dessa ferramenta se deu pelo tamanho do arquivo (4GB) e facilidade da leitura em Python
    <br/>
    
 2) Importação da biblioteca pandas para leitura do arquivo .csv
