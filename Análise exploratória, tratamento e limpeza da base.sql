@@ -1,174 +1,174 @@
---Criação do banco de dados 
+--CriaÃ§Ã£o do banco de dados 
 CREATE DATABASE CaseTelecom
 
---Definição do banco de dados a ser usado
+--DefiniÃ§Ã£o do banco de dados a ser usado
 USE CaseTelecom
 
---Análise exploratória inicial para familiarização com as colunas disponíveis e identificação de possíveis tratamentos
+--AnÃ¡lise exploratÃ³ria inicial para familiarizaÃ§Ã£o com as colunas disponÃ­veis e identificaÃ§Ã£o de possÃ­veis tratamentos
 SELECT TOP 100 
 * 
 FROM reclamacoes_contexto
 
---Seleção das colunas fundamentais para a análise e aplicação de filtros no parâmetro WHERE para limpeza dos dados
+--SeleÃ§Ã£o das colunas fundamentais para a anÃ¡lise e aplicaÃ§Ã£o de filtros no parÃ¢metro WHERE para limpeza dos dados
 SELECT 
-Linha AS 'ID_Cliente', --Modificação do nome da coluna para algo intuitivo
-Solicitações,
+Linha AS 'ID_Cliente', --ModificaÃ§Ã£o do nome da coluna para algo intuitivo
+SolicitaÃ§Ãµes,
 Ano,
-AnoMês,
+AnoMÃªs,
 UF,
 CanalEntrada,
-Condição,
+CondiÃ§Ã£o,
 TipoAtendimento,
-Serviço,
+ServiÃ§o,
 Marca,
 Assunto,
 Problema
 FROM reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
-ORDER BY AnoMês ASC
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+ORDER BY AnoMÃªs ASC
 
---Análise exploratória considerando a quantidade de clientes por tipo de atendimento
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de clientes por tipo de atendimento
 SELECT 
 TipoAtendimento,
 COUNT(DISTINCT Linha) AS 'Total de clientes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
 GROUP BY TipoAtendimento
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando o total de clientes e reclamações por tipo de atendimento
+--AnÃ¡lise exploratÃ³ria considerando o total de clientes e reclamaÃ§Ãµes por tipo de atendimento
 SELECT 
 TipoAtendimento,
 COUNT(DISTINCT Linha) AS 'Total de clientes',
-SUM(SOLICITAÇÕES) AS 'Total de reclamações'
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
 GROUP BY TipoAtendimento
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando a quantidade de reclamações por marca nos anos selecionados
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de reclamaÃ§Ãµes por marca nos anos selecionados
 SELECT
 Marca,
 COUNT(DISTINCT Linha) AS 'Total de clientes',
-SUM(SOLICITAÇÕES) AS 'Total de reclamações'
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
 GROUP BY Marca
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando a quantidade de reclamações por canal de comunicação nos anos selecionados
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de reclamaÃ§Ãµes por canal de comunicaÃ§Ã£o nos anos selecionados
 SELECT 
 CanalEntrada,
 COUNT(DISTINCT Linha) AS 'Total de clientes',
-SUM(SOLICITAÇÕES) AS 'Total de reclamações'
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
 GROUP BY CanalEntrada
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando a quantidade de reclamações por ano
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de reclamaÃ§Ãµes por ano
 SELECT
 Ano,
 COUNT(DISTINCT Linha) AS 'Total de clientes',
-SUM(SOLICITAÇÕES) AS 'Total de reclamações'
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
 GROUP BY Ano
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando a quantidade de reclamações por tipo de serviço
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de reclamaÃ§Ãµes por tipo de serviÃ§o
 SELECT 
-Serviço,
+ServiÃ§o,
 COUNT(DISTINCT Linha) AS 'Total de clientes',
-SUM(SOLICITAÇÕES) AS 'Total de reclamações'
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
-GROUP BY Serviço
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+GROUP BY ServiÃ§o
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando a quantidade de reclamações por assunto
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de reclamaÃ§Ãµes por assunto
 SELECT 
 Assunto,
 COUNT(DISTINCT Linha) AS 'Total de clientes',
-SUM(SOLICITAÇÕES) AS 'Total de reclamações'
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
 GROUP BY Assunto
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando a quantidade de reclamações por Estado
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de reclamaÃ§Ãµes por Estado
 SELECT
 UF,
 REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
 REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-REPLACE(REPLACE(REPLACE(REPLACE(UF, 'PA','Pará'),'RO','Rondônia'),'RJ', 'Rio de Janeiro'),'MG', 'Minas Gerais'),'TO','Tocantins')
-,'PR', 'Paraná'),'BA', 'Bahia'),'SC', 'Santa Catarina'),'RS','Rio Grande do Sul'),'RN','Rio Grande do Norte'),
-'GO', 'Goiás'), 'CE','Ceará'),'SP', 'São Paulo'),'ES','Espírito Santo'),'PB','Paraíba'),'AL','Alagoas'),'MA','Maranhão'),'AM','Amazonas'),'PE', 'Pernambuco'),'SE','Sergipe'),
-'MS', 'Mato Grosso do Sul'),'MT','Mato Grosso'),'PI', 'Piauí'),'RR','Roraima'),'DF','Distrito Federal'),'AC','Acre'),
-'AP', 'Amapá') AS 'Estado',
+REPLACE(REPLACE(REPLACE(REPLACE(UF, 'PA','ParÃ¡'),'RO','RondÃ´nia'),'RJ', 'Rio de Janeiro'),'MG', 'Minas Gerais'),'TO','Tocantins')
+,'PR', 'ParanÃ¡'),'BA', 'Bahia'),'SC', 'Santa Catarina'),'RS','Rio Grande do Sul'),'RN','Rio Grande do Norte'),
+'GO', 'GoiÃ¡s'), 'CE','CearÃ¡'),'SP', 'SÃ£o Paulo'),'ES','EspÃ­rito Santo'),'PB','ParaÃ­ba'),'AL','Alagoas'),'MA','MaranhÃ£o'),'AM','Amazonas'),'PE', 'Pernambuco'),'SE','Sergipe'),
+'MS', 'Mato Grosso do Sul'),'MT','Mato Grosso'),'PI', 'PiauÃ­'),'RR','Roraima'),'DF','Distrito Federal'),'AC','Acre'),
+'AP', 'AmapÃ¡') AS 'Estado',
 COUNT(DISTINCT Linha) AS 'Total de clientes',
-SUM(SOLICITAÇÕES) AS 'Total de reclamações'
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
 GROUP BY UF
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando a quantidade de reclamações por condição
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de reclamaÃ§Ãµes por condiÃ§Ã£o
 SELECT
-Condição,
-COUNT(DISTINCT Linha) AS 'Total de clientes'
-SUM(SOLICITAÇÕES) AS 'Total de reclamações',
+CondiÃ§Ã£o,
+COUNT(DISTINCT Linha) AS 'Total de clientes',
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
-GROUP BY Condição
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+GROUP BY CondiÃ§Ã£o
 ORDER BY COUNT(DISTINCT Linha) DESC
 
---Análise exploratória considerando a quantidade de reclamações por marca e ano
+--AnÃ¡lise exploratÃ³ria considerando a quantidade de reclamaÃ§Ãµes por marca e ano
 SELECT
 Marca,
 Ano, 
 COUNT(DISTINCT Linha) AS 'Total de clientes',
-SUM(SOLICITAÇÕES) AS 'Total de reclamações'
+SUM(SOLICITAÃ‡Ã•ES) AS 'Total de reclamaÃ§Ãµes'
 FROM
 reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
 GROUP BY Marca, Ano
 ORDER BY COUNT(DISTINCT Linha) DESC, Ano
 
---Criação da view para importação da tabela tratada para o Power BI e melhor visualização dos resultados
+--CriaÃ§Ã£o da view para importaÃ§Ã£o da tabela tratada para o Power BI e melhor visualizaÃ§Ã£o dos resultados
 CREATE OR ALTER VIEW vwReclamacoes2020_2023 AS
-SELECT TOP 4000000 -- o comando ORDER BY em views apenas funciona prsença 
+SELECT TOP 4000000 -- o comando ORDER BY em views apenas funciona prsenÃ§a 
 Linha AS 'ID_Cliente',
-Solicitações,
+SolicitaÃ§Ãµes,
 Ano,
-AnoMês,
+AnoMÃªs,
 REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
 REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-REPLACE(REPLACE(REPLACE(REPLACE(UF, 'PA','Pará'),'RO','Rondônia'),'RJ', 'Rio de Janeiro'),'MG', 'Minas Gerais'),'TO','Tocantins')
-,'PR', 'Paraná'),'BA', 'Bahia'),'SC', 'Santa Catarina'),'RS','Rio Grande do Sul'),'RN','Rio Grande do Norte'),
-'GO', 'Goiás'), 'CE','Ceará'),'SP', 'São Paulo'),'ES','Espírito Santo'),'PB','Paraíba'),'AL','Alagoas'),'MA','Maranhão'),'AM','Amazonas'),'PE', 'Pernambuco'),'SE','Sergipe'),
-'MS', 'Mato Grosso do Sul'),'MT','Mato Grosso'),'PI', 'Piauí'),'RR','Roraima'),'DF','Distrito Federal'),'AC','Acre'),
-'AP', 'Amapá') AS 'Estado',
+REPLACE(REPLACE(REPLACE(REPLACE(UF, 'PA','ParÃ¡'),'RO','RondÃ´nia'),'RJ', 'Rio de Janeiro'),'MG', 'Minas Gerais'),'TO','Tocantins')
+,'PR', 'ParanÃ¡'),'BA', 'Bahia'),'SC', 'Santa Catarina'),'RS','Rio Grande do Sul'),'RN','Rio Grande do Norte'),
+'GO', 'GoiÃ¡s'), 'CE','CearÃ¡'),'SP', 'SÃ£o Paulo'),'ES','EspÃ­rito Santo'),'PB','ParaÃ­ba'),'AL','Alagoas'),'MA','MaranhÃ£o'),'AM','Amazonas'),'PE', 'Pernambuco'),'SE','Sergipe'),
+'MS', 'Mato Grosso do Sul'),'MT','Mato Grosso'),'PI', 'PiauÃ­'),'RR','Roraima'),'DF','Distrito Federal'),'AC','Acre'),
+'AP', 'AmapÃ¡') AS 'Estado',
 CanalEntrada,
-Condição,
+CondiÃ§Ã£o,
 TipoAtendimento,
-Serviço,
+ServiÃ§o,
 Marca,
 Assunto,
 Problema
 FROM reclamacoes_contexto
-WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND Serviço != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
-ORDER BY AnoMês ASC
+WHERE Ano IN ('2020', '2021', '2022', '2023') AND UF != ' ' AND Marca != ' ' AND ServiÃ§o != ' ' AND Marca IN ('VIVO', 'TIM', 'CLARO')
+ORDER BY AnoMÃªs ASC
 
---Seleção da view criada no passo anterior antes de importá-la para o Power BI
+--SeleÃ§Ã£o da view criada no passo anterior antes de importÃ¡-la para o Power BI
 SELECT * FROM vwReclamacoes2020_2023
 
