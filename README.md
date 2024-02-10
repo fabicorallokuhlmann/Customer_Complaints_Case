@@ -1,8 +1,8 @@
 # Reclamações de Clientes de Operadoras de Telefonia Móvel 
 
-Projeto criado com a intenção de gerar insights diagnósticos sobre as motivações envolvidas nas reclamações de clientes de telefonia móvel no Brasil entre os anos de 2020 e 2023. 
+Projeto criado com o objetivo de gerar insights diagnósticos sobre as motivações envolvidas nas reclamações de clientes de telefonia móvel no Brasil entre os anos de 2020 e 2023. 
 
-A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Agência Nacional de Telecomunicações, em formato .csv. Após o download o arquivo no site do Governo Federal, os seguintes passos foram determinados para a condução do projeto:  
+A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Agência Nacional de Telecomunicações, em formato .csv. Após o download do arquivo no site do Governo Federal, os seguintes passos foram determinados para a condução do projeto:  
 
 1) Importação da base de dados para o Jupyter Notebook. A escolha dessa ferramenta se deu pelo tamanho do arquivo (5GB) e facilidade da leitura em Python
    <br/>
@@ -25,21 +25,21 @@ A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Ag
 <a href="https://ibb.co/64DZrJq"><img src="https://i.ibb.co/gDt7mFc/Solu-o3.png" alt="Solu-o3" border="0"></a>
 
 7) Por economia de tempo, optou-se por fazer os tratamentos diretamente no SQL Server
-11) Criação do banco de dados CaseTelecom
-12) Definição do CaseTelecom com banco de dados padrão
+8) Criação do banco de dados CaseTelecom
+9) Definição do CaseTelecom como banco de dados padrão
 
 <a href="https://ibb.co/Xy4f0xn"><img src="https://i.ibb.co/bH3jw54/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-14) Importação da base para o banco de dados criado
+10) Importação da base para o banco de dados criado
     
     <a href="https://ibb.co/hHstcZM"><img src="https://i.ibb.co/jGh1zW5/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-15) Após a abertura do assistente de importação, as imagens abaixo demonstrando passos tomados:
+11) Após a abertura do assistente de importação, as imagens abaixo demonstram os passos tomados:
     - seleção do tipo de arquivo (.csv, no caso), definição do ponto-e-vírgula como parâmetro de separação das linhas
       
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/db6qJsx/Solu-o4.png" alt="Solu-o4" border="0"></a>
 
-   - as colunas de "Assunto" e "Problemas" possuem grande quantidade de strings e deixá-las com apenas 50 carateres pode resultar em problema de truncamento. Portanto, escolheu-se mudar esse valor para 500 e modificar o tipo de objeto para aceitar Unicode devido os acentos vistos na análise inicial em Python    
+   - as colunas de "Assunto" e "Problemas" possuem grande quantidade de strings e deixá-las com apenas 50 carateres pode resultar em problemas de truncamento. Portanto, escolheu-se mudar esse valor para 500 e modificar o tipo de objeto para aceitar Unicode devido aos acentos vistos na análise inicial em Python    
     
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/z7rYW6m/Soluc-o5.png" alt="Soluc-o5" border="0"></a>
 
@@ -60,24 +60,24 @@ A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Ag
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/CnRsyPr/Solu-o11.png" alt="Solu-o11" border="0"></a>
 
     
-16) Análise exploratória inicial para familiarização com as colunas disponíveis e identificação de possíveis tratamentos
+12) Análise exploratória inicial para familiarização com as colunas disponíveis e identificação de possíveis tratamentos
 
 <a href="https://ibb.co/dK6y61t"><img src="https://i.ibb.co/GPkjkB9/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-18) Seleção das colunas fundamentais para a análise e aplicação de filtros no parâmetro WHERE para limpeza dos dados juntamente com a eliminação dos valores em branco (parâmetro !=)
+13) Seleção das colunas fundamentais para a análise e aplicação de filtros no parâmetro WHERE para limpeza dos dados juntamente com a eliminação dos valores em branco (parâmetro !=)
 
 <a href="https://ibb.co/4s4hdcD"><img src="https://i.ibb.co/cb24LPp/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-20) Análise exploratória aprofundada considerando
--  Quantidade de clientes por tipo de atendimento = todas as interações de clientes com as operadoras nos anos de 2020-2023 foram de reclamação
+14) Análise exploratória aprofundada considerando
+-  Quantidade de clientes por tipo de atendimento: todas as interações de clientes com as operadoras nos anos de 2020-2023 foram de reclamação
   
  <a href="https://imgbb.com/"><img src="https://i.ibb.co/L03dDXh/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
   
--  Quantidade de reclamações por marca nos anos selecionados = a Vivo lidera as reclamações, seguida pela Tim e por último pela Claro
+-  Quantidade de reclamações por marca nos anos selecionados: a Vivo lidera as reclamações, seguida pela Tim e por último pela Claro
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/vwB2Rz7/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
--  Reclamações por canal de comunicação nos anos selecionados = clientes preferem se comunicar por usuário web, seguido por Call Center e por último pelo aplicativo do celular
+-  Reclamações por canal de comunicação nos anos selecionados: clientes preferem se comunicar por usuário web, seguido por Call Center e por último pelo aplicativo do celular
 
   <a href="https://imgbb.com/"><img src="https://i.ibb.co/tJHBDLM/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
   
@@ -85,7 +85,7 @@ A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Ag
 
   <a href="https://imgbb.com/"><img src="https://i.ibb.co/QQrbwMD/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
   
--  Quantidade de reclamações por tipo de serviço: telefonia móvel pessoal pós-paga lidera o número de reclamações
+-  Quantidade de reclamações por tipo de serviço: telefonia móvel pessoal pós-paga lidera o número de reclamações para as três operadoras
 
   <a href="https://imgbb.com/"><img src="https://i.ibb.co/fv1Psvc/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
   
@@ -109,26 +109,26 @@ A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Ag
 
 <a href="https://ibb.co/NVzPPN9"><img src="https://i.ibb.co/gjCppWS/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-13) Importação da view criada para o Power BI: Obter dados -> SQL Server -> Servidor -> Escolha da tabela -> Transformar dados
-14) Visualização da tabela no Power Query para verificação se os tipos das colunas foram corretamente importados
-15) Modificação do nome da tabela importada para fReclamações2020_2023
-16) Criação de uma tabela no Excel com as imagens das logos das operadoras
-17) Importação da tabela com os links das imagens para dentro do Power Query
-18) Mescla de consultas para inserir a coluna de link da logo na tabela principal
-19) Aplicação no Power BI
-20) Criação de uma tabela de Medidas para deixar as métricas organizadas
+15) Importação da view criada para o Power BI: Obter dados -> SQL Server -> Servidor -> Escolha da tabela -> Transformar dados
+16) Visualização da tabela no Power Query para verificação se os tipos das colunas foram corretamente importados
+17) Modificação do nome da tabela importada para fReclamações2020_2023
+18) Criação de uma tabela no Excel com as imagens das logos das operadoras
+19) Importação da tabela com os links das imagens para dentro do Power Query
+20) Mescla de consultas para inserir a coluna de link da logo na tabela principal
+21) Aplicação no Power BI
+22) Criação de uma tabela de Medidas para deixar as métricas organizadas
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/GnxbSv9/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-21) Criação da tabela dCalendario por meio do comando abaixo:
+23) Criação da tabela dCalendario por meio do comando abaixo:
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/y59Kn16/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-22) Estabelecimento dos relacionamentos entre as tabelas fReclamações2020_2023 e dCalendario (coluna de data e mês/ano)
+24) Estabelecimento dos relacionamentos entre as tabelas fReclamações2020_2023 e dCalendario (colunas de data e mês/ano)
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/5YnVmpv/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-23) Métricas calculadas em linguagem DAX:
+25) Métricas calculadas em linguagem DAX:
    - total de clientes que reclamaram
        
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/wCJ5jFY/Sem-t-tulo.png" alt="Sem-t-tulo" border="0"></a>
@@ -149,7 +149,6 @@ A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Ag
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/tCfTBNw/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-
  - ranking dos assuntos mais recorrentes nas reclamações (necessária para a análise de Pareto)
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/GnvFPtL/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
@@ -162,12 +161,11 @@ A base de dados foi coletada e disponibilizada de forma pública pela Anatel, Ag
 
 <a href="https://imgbb.com/"><img src="https://i.ibb.co/WnRhTrS/Sem-t-tulo2.png" alt="Sem-t-tulo2" border="0"></a>
 
-    
-24) Seleção dos visuais mais adequados para cada análise, aplicando técnicas de storytelling
-25) Criação da análise de Pareto considerando a quantidade de reclamações e o percentual representativo
-26) Determinação da paleta de cores a ser utilizada no dashboard
-27) Introdução de ferramentas interativas, como Image Grid (botões com as logos), painel retrátil, botões de navegação, tooltip
-28) Publicação do dashboard no Power BI Online e compartilhamento de link para visualização
+26) Seleção dos visuais mais adequados para cada análise, aplicando técnicas de storytelling
+27) Criação da análise de Pareto considerando a quantidade de reclamações e o percentual representativo
+28) Determinação da paleta de cores a ser utilizada no dashboard
+29) Introdução de ferramentas interativas, como Image Grid (botões com as logos), painel retrátil, botões de navegação, tooltip
+30) Publicação do dashboard no Power BI Online e compartilhamento de link para visualização
 
 
 
